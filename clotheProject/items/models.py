@@ -7,6 +7,7 @@ class Item(models.Model):
     price = models.FloatField(default=0, blank=True)
     rating = models.IntegerField(default=0, blank=True)
     description = models.TextField(max_length=300, blank=True)
+    photo = models.ImageField(upload_to="media/", blank=True)
 
 
     def __unicode__(self):

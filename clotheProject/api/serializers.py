@@ -7,7 +7,7 @@ class ItemSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Item
-        fields = ('name', 'price', 'description', 'rating')
+        fields = ('name', 'price', 'description', 'rating', 'photo')
 
 
 class ItemViewSet(viewsets.ModelViewSet):
