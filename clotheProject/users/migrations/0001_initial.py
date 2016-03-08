@@ -9,6 +9,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+        ('items', '0004_auto_20160307_1741'),
     ]
 
     operations = [
@@ -16,9 +17,10 @@ class Migration(migrations.Migration):
             name='UserProfile',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('photo', models.ImageField(null=True, upload_to=b'media/', blank=True)),
+                ('photo', models.ImageField(upload_to=b'media/', blank=True)),
                 ('likes', models.IntegerField(blank=True)),
                 ('dislikes', models.IntegerField(blank=True)),
+                ('favorites', models.ForeignKey(blank=True, to='items.Item', null=True)),
                 ('user', models.OneToOneField(null=True, to=settings.AUTH_USER_MODEL)),
             ],
         ),
