@@ -2,6 +2,7 @@ from django.conf.urls import include, url, patterns
 from django.contrib import admin
 from django.contrib.auth.models import User
 from django.conf.urls.static import static
+from django.conf import settings
 
 from rest_framework import routers, serializers, viewsets
 
