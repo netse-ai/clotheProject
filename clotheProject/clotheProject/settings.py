@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'items',
     'api',
     'rest_framework',
+    'users',
 )
 
 MIDDLEWARE_CLASSES = (

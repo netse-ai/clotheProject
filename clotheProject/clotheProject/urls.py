@@ -4,10 +4,16 @@ from django.contrib.auth.models import User
 from rest_framework import routers, serializers, viewsets
 
 from items.models import Item
-from api.serializers import ItemSerializer, ItemViewSet
+from api.serializers import (ItemSerializer, ItemViewSet,
+    UserSerializer,
+    UserViewSet,
+    UserProfileSerializer,
+    UserProfileViewSet)
 
 router = routers.DefaultRouter()
 router.register(r'items', ItemViewSet)
+router.register(r'users', UserViewSet)
+router.register(r'user_profiles', UserProfileViewSet)
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
