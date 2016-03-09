@@ -1,0 +1,26 @@
+{% load staticfiles %}
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport content" = "width-device-width, inital-scale=1.0">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<title> Community </title>
+</head>
+
+<body class="body">
+	{% for item in items%}
+	<article id="topContent">
+		<div>
+			<h1>{{ item.name }}</h1>
+			<h1>{{ item.price }}</h1>
+			<h1>{{ item.rating }}</h1>
+			<h1>{{ item.description }}</h1>
+			<h1>{{ item.photo }}</h1>
+	</article>
+	{% endfor %}
+
+</body>
+</html>
