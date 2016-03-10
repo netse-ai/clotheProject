@@ -8,10 +8,10 @@ from django.http import HttpResponse, HttpResponseRedirect
 from users.models import UserProfile
 
 
-def user_profile_view(request):
+def users_view(request):
 
     users = UserProfile.objects.all()
-    template = 'users/userprofile.html'
+    template = 'users/users.html'
     context = {'users': users}
 
     return render(request, template, context)
