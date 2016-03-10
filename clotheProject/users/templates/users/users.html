@@ -17,9 +17,7 @@
 			<h1>User: {{ users.user.username }}</h1>
 			<h1>Likes: {{ users.likes }}</h1>
 			<h1>Dislikes: {{ users_view.dislikes }}</h1>
-        {% for name in users.favorites.all %}
-			<h1>Favorites: {{ name }}</h1>
-        {% endfor %}
+			<h1>Favorites:{% for name in users.favorites.all %} {{ name }}</h1>
 			<h1>Photo: {{ users.photo }}</h1>
 	</article>
 	<h1> --------------- </h1>
