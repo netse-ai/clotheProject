@@ -11,19 +11,19 @@
 </head>
 
 <body class="body">
-	{% for user in users%}
+    {% for users in users %}
 	<article id="topContent">
 		<div>
-			<h1>User: {{ user.user.username }}</h1>
-			<h1>Likes: {{ user.likes }}</h1>
-			<h1>Dislikes: {{ user.dislikes }}</h1>
-            <h3> Favorites is broken.  Not registering<b>
-                item values in UserProfile table</h1>
-			<h1>Favorites: {{ user.favorites.name }}</h1>
-			<h1>Photo: {{ user.photo }}</h1>
+			<h1>User: {{ users.user.username }}</h1>
+			<h1>Likes: {{ users.likes }}</h1>
+			<h1>Dislikes: {{ users_view.dislikes }}</h1>
+        {% for name in users.favorites.all %}
+			<h1>Favorites: {{ name }}</h1>
+        {% endfor %}
+			<h1>Photo: {{ users.photo }}</h1>
 	</article>
 	<h1> --------------- </h1>
-	{% endfor %}
+    {% endfor %}
 
 </body>
 </html>
