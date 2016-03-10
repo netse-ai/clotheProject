@@ -10,7 +10,7 @@ from users.models import UserProfile
 
 def users_view(request):
 
-    users = UserProfile.objects.all()
+    users = UserProfile.objects.all()[:5]
     template = 'users/users.html'
     context = {'users': users}
 
