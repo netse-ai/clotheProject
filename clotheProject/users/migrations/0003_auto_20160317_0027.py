@@ -7,7 +7,7 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('users', '0002_auto_20160309_2326'),
+        ('users', '0002_auto_20160317_0022'),
     ]
 
     operations = [

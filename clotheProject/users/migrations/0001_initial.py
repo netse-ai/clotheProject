@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
                 ('photo', models.ImageField(upload_to=b'media/', blank=True)),
                 ('likes', models.IntegerField(blank=True)),
                 ('dislikes', models.IntegerField(blank=True)),
-                ('favorites', models.ForeignKey(blank=True, to='items.Item', null=True)),
+                ('favorites', models.ManyToManyField(to='items.Item', blank=True)),
                 ('user', models.OneToOneField(null=True, to=settings.AUTH_USER_MODEL)),
             ],
         ),
