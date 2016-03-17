@@ -23,7 +23,7 @@ def user_login(request):
             print user
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect('/users/')
+                return HttpResponseRedirect('/users/profile/')
             else:
                 return HttpResponse('Your account is disabled. \
                 Please contact Administration.')
@@ -67,6 +67,6 @@ def user_profile(request):
 
 
 @login_required
-def logout(request):
+def user_logout(request):
     logout(request)
-    return HttpResponseRedirect('/users/')
+    return HttpResponseRedirect('/users/login')

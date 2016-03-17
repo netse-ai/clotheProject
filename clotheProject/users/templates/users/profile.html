@@ -12,6 +12,8 @@
     </head>
 
     <body class="body">
+        {% if profile %}
+        <a href="{% url 'users:logout' %}"><h1>Logout</h1></a>
     	<article id="topContent">
     		<div>
     			<h1>User: {{ profile.user.username }}</h1>
@@ -22,3 +24,4 @@
     	</article>
     	<h1> --------------- </h1>
     	</header>
+        {% endif %}
