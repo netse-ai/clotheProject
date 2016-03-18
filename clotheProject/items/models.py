@@ -10,7 +10,7 @@ class Item(models.Model):
     rating = models.IntegerField(default=0, blank=True)
     description = models.TextField(max_length=300, blank=True)
     photo = models.ImageField(upload_to="media/", blank=True)
-    photo_url = models.URLField(max_length=200)
+    photo_url = models.URLField(max_length=200, blank=True)
     # identifier = models.IntegerField(default=0, blank=False)
 
 
