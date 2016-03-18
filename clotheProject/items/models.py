@@ -5,6 +5,7 @@ from django.utils.crypto import get_random_string
 
 class Item(models.Model):
     """Item Object Class"""
+    item_url = models.URLField(max_length=200, blank=True)
     name = models.CharField(max_length=125, blank=True)
     price = models.FloatField(default=0, blank=True)
     rating = models.IntegerField(default=0, blank=True)
