@@ -15,7 +15,7 @@ class ItemSerializer(serializers.HyperlinkedModelSerializer):
 class UserProfileSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = UserProfile
-        fields = ('likes', 'dislikes', 'photo')
+        fields = ('likes', 'dislikes', 'photo', 'favorites')
 
 class FavoritesSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -25,7 +25,7 @@ class FavoritesSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
-    userprofile = UserProfileSerializer()
+    userprofile = UserProfileSerializer(read_only=True)
     # favorites = FavoritesSerializer(many=True)
     class Meta:
         model = User
