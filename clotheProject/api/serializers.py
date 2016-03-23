@@ -9,7 +9,7 @@ class ItemSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Item
-        fields = ('item_url', 'name', 'price', 'description', 'rating', 'photo', 'photo_url')
+        fields = ('name', 'price', 'description', 'rating', 'photo', 'barcode', 'photo_url','item_url' )
 
 
 class UserProfileSerializer(serializers.HyperlinkedModelSerializer):
