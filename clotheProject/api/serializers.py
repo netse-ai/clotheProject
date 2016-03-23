@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
-from users.models import UserProfile
+from users.models import UserProfile, Favorites
 from items.models import Item
 
 
@@ -15,14 +15,21 @@ class ItemSerializer(serializers.HyperlinkedModelSerializer):
 class UserProfileSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = UserProfile
-        fields = ('likes', 'dislikes', 'photo', 'favorites')
+        fields = ('likes', 'dislikes', 'photo')
+
+class FavoritesSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Favorites
+        fields = ('userprofile', 'item')
+
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     userprofile = UserProfileSerializer()
+    favorites = FavoritesSerializer(many=True)
     class Meta:
         model = User
-        fields = ('username', 'url', 'email', 'is_staff', 'password', 'userprofile')
+        fields = ('username', 'url', 'email', 'is_staff', 'password', 'userprofile', 'favorites')
 
     def create(self, validated_data):
         profile_data = validated_data.pop('userprofile')

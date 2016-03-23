@@ -6,13 +6,17 @@ from items.models import Item
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, null=True)
-    favorites = models.ManyToManyField(Item, blank=True)
     photo = models.ImageField(upload_to='media/', blank=True, null=True)
     likes = models.IntegerField(blank=True, null=True)
     dislikes = models.IntegerField(blank=True, null=True)
 
     def __unicode__(self):
         return unicode(self.user.username)
+
+
+class Favorites(models.Model):
+    userprofile = models.OneToOneField(UserProfile, null=True)
+    item = models.ManyToManyField(Item)
 
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
