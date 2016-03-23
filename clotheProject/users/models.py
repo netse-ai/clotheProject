@@ -6,7 +6,7 @@ from items.models import Item
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, null=True)
-    Favorites = models.ManyToManyField(Item)
+    favorites = models.ManyToManyField(Item)
     photo = models.ImageField(upload_to='media/', blank=True, null=True)
     likes = models.IntegerField(blank=True, null=True)
     dislikes = models.IntegerField(blank=True, null=True)
