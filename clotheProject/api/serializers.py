@@ -19,7 +19,7 @@ class UserProfileSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
-    userprofile = UserProfileSerializer(read_only=True)
+    userprofile = UserProfileSerializer()
     class Meta:
         model = User
         fields = ('username', 'url', 'email', 'is_staff', 'password', 'userprofile')
@@ -27,5 +27,6 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     def create(self, validated_data):
         userprofile_data = validated_data.pop('userprofile')
         user = User.objects.create(**validated_data)
-        UserProfile.objects.create(user=user, **userprofile_data)
+        for user_data in userprofile_data:
+            UserProfile.objects.create(user=user, **userprofile_data)
         return user
