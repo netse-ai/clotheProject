@@ -26,7 +26,7 @@ class FavoritesSerializer(serializers.HyperlinkedModelSerializer):
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     userprofile = UserProfileSerializer()
-    favorites = FavoritesSerializer(many=True)
+    favorites = FavoritesSerializer()
     class Meta:
         model = User
         fields = ('username', 'url', 'email', 'is_staff', 'password', 'userprofile', 'favorites')
