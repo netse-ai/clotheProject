@@ -25,8 +25,9 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('username', 'url', 'email', 'is_staff', 'password', 'userprofile')
 
     def create(self, validated_data):
+        validated_data.pop('username')
         profile_data = validated_data.pop('userprofile')
-        user = super(UserSerializer, self).create(validated_data)
+        user = super(UserSerializer, self).create(**validated_data)
         self.create_or_update_profile(instance, profile_data)
         return user
 
