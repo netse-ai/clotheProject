@@ -28,8 +28,9 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         profile_data = validated_data.pop('userprofile')
         print profile_data
         user = User.objects.create_user(**validated_data)
-        UserProfile.objects.create(**profile_data)
-        return user
+        user_profile = UserProfile.objects.create(**profile_data)
+        user_profile.save()
+        return user, user_profile
 
     # def update(self, instance, validated_data):
     #     profile_data = validated_data.pop('userprofile')
