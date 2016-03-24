@@ -31,9 +31,10 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     #     return user
 
     def update(self, instance, validated_data):
-        instance.likes = validated_data.get('likes')
-        instance.dislikes = validated_data.get('dislikes')
-        instance.photo = validated_data.get('photo')
+        profile_data = validated_data.pop('userprofile')
+        instance.likes = profile_data.get('likes')
+        instance.dislikes = profile_data.get('dislikes')
+        instance.photo = profile_data.get('photo')
         instance.save()
         return instance
 
