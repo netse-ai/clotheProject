@@ -40,4 +40,4 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
     def create(self, validated_data):
         profile_data = validated_data.pop('userprofile')
-        return UserProfile.objects.create(**profile_data)
+        return User.objects.create(**profile_data)
