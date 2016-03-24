@@ -5,7 +5,7 @@ from django.db.models.signals import post_save
 from items.models import Item
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, null=True)
+    user = models.OneToOneField(User, unique=True, null=True)
     favorites = models.ManyToManyField(Item)
     photo = models.ImageField(upload_to='media/', blank=True, null=True)
     likes = models.IntegerField(blank=True, null=True)
