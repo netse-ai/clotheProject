@@ -15,7 +15,7 @@ class ItemSerializer(serializers.HyperlinkedModelSerializer):
 class UserProfileSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = UserProfile
-        fields = ('likes', 'dislikes', 'photo')
+        fields = ('likes', 'dislikes', 'photo', 'favorites')
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
