@@ -9,6 +9,5 @@ router.register(r'users', UserViewSet)
 
 urlpatterns = [
     url(r'^$', include(router.urls)),
-    url(r'^items/(?P<pk>[0-9]+)/$', include(ItemDetail.as_view())),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
