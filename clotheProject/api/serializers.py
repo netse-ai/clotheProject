@@ -19,7 +19,7 @@ class UserProfileSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
-    userprofile = UserProfileSerializer(read_only=True)
+    userprofile = UserProfileSerializer()
     class Meta:
         model = User
         fields = ('username', 'url', 'email', 'is_staff', 'password', 'userprofile')
