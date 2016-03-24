@@ -39,5 +39,6 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         return instance
 
     def create(self, validated_data):
+        validated_data.pop('userprofile')
         user = User.objects.create(**validated_data)
         return user
