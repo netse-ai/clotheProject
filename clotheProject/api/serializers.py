@@ -26,6 +26,16 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
     def create(self, validated_data):
         profile_data = validated_data.pop('userprofile')
-        user = User.objects.create_user(**validated_data)
-        UserProfile.objects.get_or_create(user=user, **profile_data)
+        user = super(UserSerializer, self).create(**validated_data)
+        self.create_or_update_profile(instance, profile_data)
         return user
+
+    def update(self, instance, validated_data):
+        profile_data = validated_data.pop('userprofile', None)
+        self.create_or_update_profile(instance, profile_data)
+        return super(UserSerializer, self).update(instance, validated_data)
+
+    def create_or_update_profile(self, user, profile_data):
+        profile, created = UserProfile.objects.get_or_create(user=user, defaults=profile_data)
+        if not created and profile_data is not None:
+            super(UserSerializer, self).update(profile, profile_data)
