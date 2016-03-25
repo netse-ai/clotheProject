@@ -13,7 +13,7 @@ class ItemSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class FavoriteSerializer(serializers.ModelSerializer):
-    items = ItemSerializer(many=True)
+    items = ItemSerializer()
     class Meta:
         model = Favorite
         feilds = ('items')
