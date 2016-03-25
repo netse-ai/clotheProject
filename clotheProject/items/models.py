@@ -2,6 +2,8 @@ import random
 from django.db import models
 from django.db.models.signals import post_save
 from django.utils.crypto import get_random_string
+from django.contrib.auth.models import User
+
 
 class Item(models.Model):
     """Item Object Class"""
@@ -15,11 +17,20 @@ class Item(models.Model):
     photo_url = models.URLField(max_length=200, blank=True)
     item_url = models.URLField(max_length=200, blank=True)
 
-    # identifier = models.IntegerField(default=0, blank=False)
-
-
     def __unicode__(self):
         return unicode(self.name)
+
+
+class Favorite(models.Model):
+    user = models.OneToOneField(User, null=True)
+    items = models.ManyToManyField(Item)
+
+    def __unicode__(self):
+        return unicode(self.user.username)
+
+    def admin_names(self):
+        return '\n'.join([a.name for a in self.items.all()])
+
 
 
 #
