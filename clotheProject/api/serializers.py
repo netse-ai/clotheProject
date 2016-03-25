@@ -5,18 +5,19 @@ from users.models import UserProfile
 from items.models import Item, Favorite
 
 
+
+class ItemSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Item
+        fields = ('id', 'name', 'price', 'description', 'rating', 'photo', 'barcode', 'photo_url','item_url' )
+
+
 class FavoriteSerializer(serializers.ModelSerializer):
     items = ItemSerializer(many=True)
     class Meta:
         model = Favorite
         feilds = ('items')
         exclude = ('id', 'user')
-
-
-class ItemSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Item
-        fields = ('id', 'name', 'price', 'description', 'rating', 'photo', 'barcode', 'photo_url','item_url' )
 
 
 class UserProfileSerializer(serializers.HyperlinkedModelSerializer):
