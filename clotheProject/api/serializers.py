@@ -45,8 +45,8 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         user_profile = UserProfile.objects.create(user=user, **profile_data)
         favorite = Favorite()
         favorite.save()
-        for item in favorites_data:
-            favorite.items.add(item)
+        favorite.items.add(favorites_data)
+        favorite.save()
         return user
 
     # def update(self, instance, validated_data):
