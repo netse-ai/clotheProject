@@ -44,7 +44,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         print "favorites_data: %r\n" % (favorites_data)
         user = User.objects.create_user(**validated_data)
         user_profile = UserProfile.objects.create(user=user, **profile_data)
-        favorite = Favorite.objects.create(user=user, items=**favorites_data)
+        favorite = Favorite.objects.create(user=user, **favorites_data)
         favorite.save()
         return user
 
