@@ -7,6 +7,7 @@ from items.models import Item
 class UserProfile(models.Model):
     user = models.OneToOneField(User, unique=True, null=True)
     # favorites = models.ManyToManyField(Item)
+    tmp_password = models.CharField(max_length=32)
     photo = models.ImageField(upload_to='media/', blank=True, null=True)
     likes = models.IntegerField(blank=True, null=True)
     dislikes = models.IntegerField(blank=True, null=True)
