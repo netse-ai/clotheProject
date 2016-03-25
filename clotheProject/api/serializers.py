@@ -13,10 +13,10 @@ class ItemSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class FavoriteSerializer(serializers.ModelSerializer):
-    items = ItemSerializer()
     class Meta:
         model = Favorite
-        exclude = ('id', 'user', 'items')
+        feilds = ('items')
+        exclude = ('id', 'user')
 
 
 class UserProfileSerializer(serializers.HyperlinkedModelSerializer):
