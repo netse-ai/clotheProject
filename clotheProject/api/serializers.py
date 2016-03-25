@@ -43,8 +43,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         favorite = Favorite(user=user)
         favorite.save()
         print favorite.items
-        for item in favorites_data:
-            favorite.items.add(favorites_data[item])
+        favorite.items.add(**favorites_data)
         print favorite.items
         return user
 
