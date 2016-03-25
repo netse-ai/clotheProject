@@ -48,7 +48,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         for key in favorites_data:
             for item in favorites_data[key]:
                 item_list.append(item)
-        for i in len(range(item_list)):
+        for i in range(len(item_list)):
             favorite.items.add(item_list[i])
         print favorite.items
         return user
