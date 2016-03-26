@@ -50,6 +50,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
             print key
             for item in favorites_data[key]:
                 print item.id
+                favorite.items.add(item)
         print favorite.items
         return user
 
