@@ -46,7 +46,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         favorite = Favorite(user=user)
         favorite.save()
         print favorite.items
-        item = Item.objects.get_or_create(**item_data)
+        item = Item.objects.get_or_create(item_data)
         favorite.items.add(item)
         # for key in favorites_data:
         #     print key
