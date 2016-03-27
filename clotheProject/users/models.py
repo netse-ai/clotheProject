@@ -16,8 +16,8 @@ class UserProfile(models.Model):
         return unicode(self.user.username)
 
 #
-class Favorites(models.Model):
-    pass
+# class Favorites(models.Model):
+#     pass
 #     userprofile = models.OneToOneField(UserProfile, null=True)
 #     item = models.ManyToManyField(Item)
 

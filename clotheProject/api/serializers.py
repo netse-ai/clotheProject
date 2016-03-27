@@ -2,7 +2,8 @@ from django.contrib.auth.models import User
 from rest_framework import serializers
 
 from users.models import UserProfile
-from items.models import Item, Favorite
+from items.models import Item
+# Favorite
 
 
 
@@ -12,10 +13,10 @@ class ItemSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('id', 'name', 'price', 'description', 'rating', 'photo', 'barcode', 'photo_url','item_url' )
 
 
-class FavoriteSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Favorite
-        exclude = ('id', 'user')
+# class FavoriteSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Favorite
+#         exclude = ('id', 'user')
 
 
 class UserProfileSerializer(serializers.HyperlinkedModelSerializer):
@@ -26,35 +27,35 @@ class UserProfileSerializer(serializers.HyperlinkedModelSerializer):
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     userprofile = UserProfileSerializer()
-    favorite = FavoriteSerializer()
+    # favorite = FavoriteSerializer()
     class Meta:
         model = User
         fields = (
                 'id', 'username', 'url',
                  'email', 'is_staff', 'password',
-                 'userprofile', 'favorite'
+                 'userprofile'
                  )
 
     def create(self, validated_data):
         print validated_data
         profile_data = validated_data.pop('userprofile')
-        favorites_data = validated_data.pop('favorite')
+        # favorites_data = validated_data.pop('favorite')
         # item_data = favorites_data.pop('items')
         # print item_data
         user = User.objects.create_user(**validated_data)
         user_profile = UserProfile.objects.create(user=user, **profile_data)
-        favorite = Favorite(user=user)
-        favorite.save()
-        print favorite.items
+        # favorite = Favorite(user=user)
+        # favorite.save()
+        # print favorite.items
         # for i in item_data:
         #     item = Item.objects.filter(i)
         #     favorite.items.add(item)
-        for key in favorites_data:
-            print key
-            for item in favorites_data[key]:
-                print item.id
-                favorite.items.add(item)
-        print favorite.items
+        # for key in favorites_data:
+        #     print key
+        #     for item in favorites_data[key]:
+        #         print item.id
+        #         favorite.items.add(item)
+        # print favorite.items
         return user
 
     # def update(self, instance, validated_data):

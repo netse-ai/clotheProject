@@ -21,15 +21,15 @@ class Item(models.Model):
         return unicode(self.name)
 
 
-class Favorite(models.Model):
-    user = models.OneToOneField(User, null=True)
-    items = models.ManyToManyField(Item)
-
-    def __unicode__(self):
-        return unicode(self.user.username)
-
-    def admin_names(self):
-        return '\n'.join([a.name for a in self.items.all()])
+# class Favorite(models.Model):
+#     user = models.OneToOneField(User, null=True)
+#     items = models.ManyToManyField(Item)
+#
+#     def __unicode__(self):
+#         return unicode(self.user.username)
+#
+#     def admin_names(self):
+#         return '\n'.join([a.name for a in self.items.all()])
 
 
 
