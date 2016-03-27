@@ -39,21 +39,21 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         print validated_data
         profile_data = validated_data.pop('userprofile')
         favorites_data = validated_data.pop('favorite')
-        item_data = favorites_data.pop('items')
+        # item_data = favorites_data.pop('items')
         print item_data
         user = User.objects.create_user(**validated_data)
         user_profile = UserProfile.objects.create(user=user, **profile_data)
         favorite = Favorite(user=user)
         favorite.save()
         print favorite.items
-        for i in item_data:
-            item = Item.objects.filter(i)
-            favorite.items.add(item)
-        # for key in favorites_data:
-        #     print key
-        #     for item in favorites_data[key]:
-        #         print item.id
-        #         favorite.items.add(item)
+        # for i in item_data:
+        #     item = Item.objects.filter(i)
+        #     favorite.items.add(item)
+        for key in favorites_data:
+            print key
+            for item in favorites_data[key]:
+                print item.id
+                favorite.items.add(item)
         print favorite.items
         return user
 
