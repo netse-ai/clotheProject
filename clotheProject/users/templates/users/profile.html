@@ -25,7 +25,7 @@
           <table class="table">
             <h1>Likes: {{ profile.likes }}</h1>
             <h1>Dislikes: {{ profile.dislikes }}</h1>
-            <h1>Favorites: {%for name in user.favorite.items.all %}{{items}}{%endfor%}</h1>
+            <h1>Favorites: {%for name in user.favorite.items.all %}{{name}}{%endfor%}</h1>
           </table>
         </div>
     	<article id="topContent">
