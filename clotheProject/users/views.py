@@ -35,9 +35,10 @@ def user_login(request):
 
 @login_required
 def user_profile(request):
+    user = User.objects.get(user=request.user.id)
     profile = UserProfile.objects.get(user=request.user.id)
     template = 'users/profile.html'
-    context = {'profile': profile}
+    context = {'profile': profile, 'user':user}
     return render(request, template, context)
 
 # def register(request):
