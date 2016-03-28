@@ -15,7 +15,7 @@ class ItemSerializer(serializers.HyperlinkedModelSerializer):
 class FavoriteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Favorite
-        fields = ('user', 'items')
+        fields = ('id', 'user', 'items')
 
 
 class UserProfileSerializer(serializers.HyperlinkedModelSerializer):
@@ -37,23 +37,8 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     def create(self, validated_data):
         print validated_data
         profile_data = validated_data.pop('userprofile')
-        # favorites_data = validated_data.pop('favorite')
-        # item_data = favorites_data.pop('items')
-        # print item_data
         user = User.objects.create_user(**validated_data)
         user_profile = UserProfile.objects.create(user=user, **profile_data)
-        # favorite = Favorite(user=user)
-        # favorite.save()
-        # print favorite.items
-        # for i in item_data:
-        #     item = Item.objects.filter(i)
-        #     favorite.items.add(item)
-        # for key in favorites_data:
-        #     print key
-        #     for item in favorites_data[key]:
-        #         print item.id
-        #         favorite.items.add(item)
-        # print favorite.items
         user.save()
         return user
 
@@ -64,8 +49,3 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     #     instance.photo = profile_data.get('photo')
     #     instance.save()
     #     return instance
-    #
-    # def create(self, validated_data):
-    #     validated_data.pop('userprofile')
-    #     user = User.objects.create(**validated_data)
-    #     return user
