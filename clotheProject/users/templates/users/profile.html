@@ -14,6 +14,18 @@
     <body class="body">
         {% if profile %}
         <a href="{% url 'users:logout' %}"><h1>Logout</h1></a>
+        <div class="panel panel-default">
+          <!-- Default panel contents -->
+          <div class="panel-heading">Panel heading</div>
+          <div class="panel-body">
+            <p>...</p>
+          </div>
+
+          <!-- Table -->
+          <table class="table">
+            ...
+          </table>
+        </div>
     	<article id="topContent">
     		<div>
     			<h1>User: {{ profile.user.username }}</h1>
