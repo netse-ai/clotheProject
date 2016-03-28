@@ -24,18 +24,11 @@
           <!-- Table -->
           <table class="table">
               <thead>
-                <th>Likes: {{ profile.likes }}</th>
-                <th>Dislikes: {{ profile.dislikes }}</th>
-                {% for num in user.favorite.items.all %}
-                <th scope="row">{{num}}</th>
-                    {% for name in user.favorites.items.all %}
-                    <td>{{name}}</td>
-                    <td>{{price}}</td>
-                    <td>{{description}}</td>
-                    {% endfor %}
-                {% endfor %}
+                <th>Item</th>
+                <th>Price</th>
+                <th>Description</th>
             </thead>
-            <!-- <tbody>
+            <tbody>
                 {% for num in user.favorite.items.all %}
                 <tr>
                     <th scope="row">{{num}}</th>
@@ -46,7 +39,7 @@
                     {% endfor %}
                 {% endfor %}
                 </tr>
-            </tbody> -->
+            </tbody>
           </table>
         </div>
         {% endif %}
