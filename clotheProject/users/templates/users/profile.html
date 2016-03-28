@@ -28,11 +28,13 @@
                 <th>Dislikes: {{ profile.dislikes }}</th>
             </thead>
             <tbody>
+                {% for num in user.favorite.items.all %}
                 <tr>
+                    <th scope="row">{{num}}</th>
                     {% for name in user.favorites.items.all %}
-                    <th scope="row">1</th>
                     <td>{{name}}</td>
                     {% endfor %}
+                {% endfor %}
                 </tr>
             </tbody>
           </table>
