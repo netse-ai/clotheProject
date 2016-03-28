@@ -54,6 +54,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         #         print item.id
         #         favorite.items.add(item)
         # print favorite.items
+        user.save()
         return user
 
     # def update(self, instance, validated_data):
