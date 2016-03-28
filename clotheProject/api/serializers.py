@@ -2,8 +2,7 @@ from django.contrib.auth.models import User
 from rest_framework import serializers
 
 from users.models import UserProfile
-from items.models import Item
-# Favorite
+from items.models import Item, Favorite
 
 
 
@@ -13,10 +12,10 @@ class ItemSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('id', 'name', 'price', 'description', 'rating', 'photo', 'barcode', 'photo_url','item_url' )
 
 
-# class FavoriteSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Favorite
-#         exclude = ('id', 'user')
+class FavoriteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Favorite
+        exclude = ('id', 'user')
 
 
 class UserProfileSerializer(serializers.HyperlinkedModelSerializer):
@@ -27,7 +26,6 @@ class UserProfileSerializer(serializers.HyperlinkedModelSerializer):
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     userprofile = UserProfileSerializer()
-    # favorite = FavoriteSerializer()
     class Meta:
         model = User
         fields = (

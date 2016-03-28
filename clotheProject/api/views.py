@@ -2,8 +2,8 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 from rest_framework import viewsets, mixins, generics
 
-from api.serializers import ItemSerializer, UserSerializer
-from items.models import Item
+from api.serializers import ItemSerializer, UserSerializer, FavoriteSerializer
+from items.models import Item, Favorite
 
 
 class ItemViewSet(viewsets.ModelViewSet):
@@ -37,3 +37,17 @@ class UserViewSet(viewsets.ModelViewSet):
 
     def delete(self,request, *args, **kwargs):
         return self.destroy(request, *args, **kwargs)
+
+
+class FavoriteViewSet(viewsets.ModelViewSet):
+        queryset = Favorite.objects.all()
+        serializer_class = FavoriteSerializer
+
+        def get(self, request, *args, **kwargs):
+            return self.retrieve(request, *args, **kwargs)
+
+        def put(self, request, *args, **kwargs):
+            return self.update(request, *args, **kwargs)
+
+        def delete(self,request, *args, **kwargs):
+            return self.destroy(request, *args, **kwargs)
