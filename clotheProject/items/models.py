@@ -33,6 +33,7 @@ class Item(models.Model):
 
 
 class Favorite(models.Model):
+    id = models.AutoField(primary_key=True)
     user = models.OneToOneField(User, null=True)
     items = models.ManyToManyField(Item)
 
