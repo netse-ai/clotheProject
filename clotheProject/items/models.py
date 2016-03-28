@@ -22,7 +22,7 @@ class Item(models.Model):
         return unicode(self.name)
 
     def save(self, *args, **kwargs):
-        size = (600, 800)
+        size = (400, 300)
         if not self.id and not self.photo:
             return
 
