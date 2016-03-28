@@ -32,7 +32,7 @@
                 {% for num in user.favorite.items.all %}
                 <tr>
                     <th scope="row">{{num}}</th>
-                    {% for item in user.favorites.items.all %}
+                    {% for item in user.favorites.items %}
                     <td>{{item}}</td>
                     <td>{{item.price}}</td>
                     <td>{{item.description}}</td>
