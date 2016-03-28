@@ -55,9 +55,7 @@
 	  <div class="col-sm-6 col-md-4">
 	    <div class="thumbnail">
 			{% if item.photo %}
-	      <img src="{{ MEDIA_URL }}{{item.photo.url}}" alt=<h3>N/A</h3>>
-		  	{% else %}
-		  <img src="..." alt=<h3>N/A</h3></alt>
+	      <img src="{{ MEDIA_URL }}{{item.photo.url}}">
 		    {% endif %}
 	      <div class="caption">
 	        <h3>{{item.name}}</h3>
