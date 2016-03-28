@@ -9,9 +9,7 @@ from items.models import Item
 
 
 def item_view(request):
-
     items = Item.objects.all()
     template = 'items/items.html'
     context = {'items': items}
-
     return render(request, template, context)

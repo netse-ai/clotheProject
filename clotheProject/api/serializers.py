@@ -9,7 +9,7 @@ from items.models import Item, Favorite
 class ItemSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Item
-        fields = ('id', 'name', 'price', 'description', 'rating', 'photo', 'barcode', 'photo_url','item_url' )
+        fields = ('id', 'name', 'price', 'description', 'rating', 'barcode', 'photo_url','item_url' )
 
 
 class FavoriteSerializer(serializers.ModelSerializer):
