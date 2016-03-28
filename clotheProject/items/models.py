@@ -21,11 +21,12 @@ class Item(models.Model):
     def __unicode__(self):
         return unicode(self.name)
 
-    def save(self, size=(400,600)):
+    def save(self, *args, **kwargs):
+        size = (400, 600)
         if not self.id and not self.photo:
             return
 
-        super(Item, self).save()
+        super(Item, self).save(*args, **kwargs)
         image = Image.open(self.photo)
         image = image.resize(size, Image.ANTIALIAS)
         image.save(self.photo.path)
