@@ -29,11 +29,11 @@ class Item(models.Model):
         image = Image.open(self.photo)
         (width, height) = image.size
         print image.size
-        if (800 / width < 800 / height):
-            factor = (800 / height)
+        if (800 // width < 800 // height):
+            factor = (800 // height)
         else:
-            factor = (800 / width)
-        size = (width / factor, height / factor)
+            factor = (800 // width)
+        size = (width // factor, height // factor)
         image = image.resize(size, Image.ANTIALIAS)
         image.save(self.photo.path)
 
