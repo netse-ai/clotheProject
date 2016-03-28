@@ -32,10 +32,10 @@
                 {% for name in user.favorite.items.all %}
                 <tr>
                     <th scope="row">{{name}}</th>
-                    <!-- {% for item in user.favorites.items.all %} -->
-                    <!-- <td>{{item}}</td> -->
-                    <td>{{name.price}}</td>
-                    <td>{{name.description}}</td>
+                    {% for item in user.favorites.items.all %}
+                    <td>{{item}}</td>
+                    <td>{{item.price}}</td>
+                    <td>{{item.description}}</td>
                     {% endfor %}
                 {% endfor %}
                 </tr>
