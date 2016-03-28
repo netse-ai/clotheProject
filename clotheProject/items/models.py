@@ -1,4 +1,5 @@
 import random
+from PIL import Image
 from django.db import models
 from django.db.models.signals import post_save
 from django.utils.crypto import get_random_string
@@ -19,6 +20,21 @@ class Item(models.Model):
 
     def __unicode__(self):
         return unicode(self.name)
+
+    def save(self):
+        if not self.id and not self.photo:
+            return
+
+        super(Item, self).save()
+        image = Image.open(self.photo)
+        (width, height) = image.size
+        if (800 / width < 800 / height):
+            factor = float(800 / height)
+        else:
+            factor = float(800 / width)
+        size = int((width / factor, height / factor))
+        image = image.resize(size, Image.ANTIALIAS)
+        image.save(self.photo.path)
 
 
 class Favorite(models.Model):
