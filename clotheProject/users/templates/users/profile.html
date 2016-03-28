@@ -16,26 +16,25 @@
         <a href="{% url 'users:logout' %}"><h1>Logout</h1></a>
         <div class="panel panel-default">
           <!-- Default panel contents -->
-          <div class="panel-heading">Panel heading</div>
+          <div class="panel-heading">User</div>
           <div class="panel-body">
-            <p><h1>User: {{ profile.user.username }}</h1></p>
+            <h1>User: {{ profile.user.username }}</h1>
           </div>
 
           <!-- Table -->
           <table class="table">
-            <h1>Likes: {{ profile.likes }}</h1>
-            <h1>Dislikes: {{ profile.dislikes }}</h1>
-            <h1>Favorites: {%for name in user.favorite.items.all %}{{name}}, {%endfor%}</h1>
+              <thead>
+                <th>Likes: {{ profile.likes }}</th>
+                <th>Dislikes: {{ profile.dislikes }}</th>
+            </thead>
+            <tbody>
+                <tr>
+                    {% for name in user.favorites.items.all %}
+                    <th scope="row">1</th>
+                    <td>{{name}}</td>
+                    {% endfor %}
+                </tr>
+            </tbody>
           </table>
         </div>
-    	<article id="topContent">
-    		<div>
-    			<!-- <h1>User: {{ profile.user.username }}</h1>
-    			<h1>Favorites:{% for name in profile.favorites.all %} {{ name }} {% endfor %}</h1> -->
-                {% if profile.photo %}
-                <h1>Photo: </h1> <img src="{{ MEDIA_URL }}{{profile.photo.url}}" alt= <h1>N/A</h1></>
-                {% endif %}
-        </article>
-    	<h1> --------------- </h1>
-    	</header>
         {% endif %}
