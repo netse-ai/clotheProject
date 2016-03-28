@@ -21,7 +21,7 @@ class Item(models.Model):
     def __unicode__(self):
         return unicode(self.name)
 
-    def save(self, size=(600,800)):
+    def save(self, size=(400,600)):
         if not self.id and not self.photo:
             return
 
