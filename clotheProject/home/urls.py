@@ -1,8 +1,8 @@
 from django.conf.urls import url
 
 # from items.models import Item
-from home.views import home_view
+from home.views import register
 
 urlpatterns = [
-    url(r'^$', home_view, name="home_view"),
+    url(r'^$', register, name="register"),
     ]
