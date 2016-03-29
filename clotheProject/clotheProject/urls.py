@@ -14,5 +14,6 @@ urlpatterns = [
     url(r'^api/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^items/', include('items.urls', namespace='items')),
-    url(r'^users/', include('users.urls', namespace='users'))
+    url(r'^users/', include('users.urls', namespace='users')),
+    url(r'^$', include('home.urls', namespace='home'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
