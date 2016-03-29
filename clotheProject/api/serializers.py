@@ -38,7 +38,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         print validated_data
         profile_data = validated_data.pop('userprofile')
         user = User.objects.create_user(**validated_data)
-        user_profile = UserProfile.objects.create(user=user, **profile_data)
+        user_profile = UserProfile.objects.get_or_create(user=user, **profile_data)
         user.save()
         return user
 

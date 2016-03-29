@@ -8,6 +8,7 @@ from home.forms import UserForm
 def register(request):
     registered = False
     if request.method == "POST":
+        pritn request.POST
         username = request.POST.get('username')
         password = request.POST.get('password')
         user_form = UserForm(data=request.POST)
