@@ -4,5 +4,5 @@ from django.conf.urls import url
 from home.views import register
 
 urlpatterns = [
-    url(r'^$', register, name="register"),
+    url(r'^register/', register, name="register"),
     ]

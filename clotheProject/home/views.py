@@ -1,8 +1,10 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.db.models.signals import post_save
 from django.shortcuts import render
 from home.forms import UserForm
+from users.models import UserProfile
 # Create your views here.
 
 def register(request):
@@ -16,6 +18,7 @@ def register(request):
             user = user_form.save()
             user.set_password(user.password)
             user.save()
+            UserProfile.objects.get_or_create(user=user)
             registered = True
             user = authenticate(username=username, password=password)
             if registered:
