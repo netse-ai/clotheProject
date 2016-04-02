@@ -23,7 +23,7 @@
 		}
 
 		body {
-			padding-top: 20px;
+			padding-top: 100px;
 			font-size: 16px;
 			font-family: "Open Sans",serif;
 			background: transparent;
@@ -31,7 +31,7 @@
 
 		h1 {
 			font-family: "Abel", Arial, sans-serif;
-			font-weight: 400;
+			font-weight: 600;
 			font-size: 40px;
 		}
 
@@ -44,18 +44,47 @@
 			margin: 40px 0;
 		}
 
+		.input-group-lg {
+			margin: 40px 0;
+		}
+		.form-group {
+			padding-left: 3%;
+		}
+
+		.username{
+			padding-top: 3%;
+		}
+		.email{
+			padding-top: 3%;
+		}
+		.password{
+			padding-top: 3%;
+			padding-bottom: 3%;
+		}
+
 	</style>
 
 </head>
 <body>
-
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3 panel panel-default">
 				<h1 class="margin-base-vertical">My Favorites</h1>
-				<form id="user_form" method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {{user_form.as_p}}
+				<form class="form-horizontal" method="post" enctype="multipart/form-data">
+					<div class="form-group">
+					{% csrf_token %}
+					<div class="username">
+						<h3> Username:</h3>
+						{{ user_form.username }}
+					</div>
+					<div class='email'>
+						<h3>Email:</h3>
+						{{ user_form.email }}
+					</div>
+					<div class="password">
+						<h3>Password:</h3>
+						{{ user_form.password }}
+					</div>
                     <input type="submit" name="submit" value="Register"/>
 				</form>
 			</div><!-- //main content -->
