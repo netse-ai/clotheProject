@@ -19,7 +19,7 @@
 				url: "/items/favorites/",
 				data: {
 					id: itemId,
-					csrfmiddlewaretoken:$("input[name=csrfmiddlewaretoken]").val();
+					csrfmiddlewaretoken:$("input[name=csrfmiddlewaretoken]").val()
 				},
 				success: function(){
 					alert("Added favorite" + itemId);
