@@ -116,7 +116,7 @@
 	        <p>
 				<form id="add_favorite_form">
 					{% csrf_token %}
-					{% for id in item %}
+					{% for id in items %}
 					<button id='fav' class='btn btn-primary' type="submit" data-itemid="{{id}}" value="Favorite">Favorite {{item.id}}</a>
 					{% endfor %}
 				</form>
