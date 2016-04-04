@@ -13,7 +13,7 @@
 		var csrftoken = $("input[name=csrfmiddlewaretoken]").val();
 		$(document).on('submit', '.add_favorite_form',function(e){
 			e.preventDefault();
-			var itemId = $(e.target).add('itemid');
+			var itemId = $(e.target).data('itemid');
 			$.ajax({
 				type: "POST",
 				url: "/items/favorites/",
@@ -115,7 +115,7 @@
 			<h3>Price: {{item.price}}</h3>
 			<h3>Rating: {{item.rating}}</h3>
 	        <p>
-				<form class="add_favorite_form">
+				<form id="#add_favorite_form">
 					{% csrf_token %}
 					<button class='btn btn-primary' data-itemid="{{item.id}}" type="submit" value="Favorite">Favorite
 					<span class="glyphicon glyphicon-thumbs-up"</span></a>
