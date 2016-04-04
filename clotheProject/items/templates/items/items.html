@@ -10,9 +10,9 @@
 	<title> Community </title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script type="text/javascript">
-		$(document).on('submit', '#add_favorite_form',function(e){
+		$(document).on('submit', '.add_favorite_form',function(e){
 			e.preventDefault();
-			var $fav = $('.fav');
+			var $fav = $('#fav');
 			$.ajax({
 				type: "POST",
 				url: "/items/favorites/",
@@ -114,9 +114,9 @@
 			<h3>Price: {{item.price}}</h3>
 			<h3>Rating: {{item.rating}}</h3>
 	        <p>
-				<form id="add_favorite_form">
+				<form class="add_favorite_form">
 					{% csrf_token %}
-					<button class='fav' type="submit" data-itemid="{{item.id}}" value="Favorite">Favorite
+					<button id='fav' type="submit" data-itemid="{{item.id}}" value="Favorite">Favorite
 					<span class="glyphicon glyphicon-thumbs-up"</span></a>
 				</form>
 			</p>
