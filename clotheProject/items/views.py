@@ -25,6 +25,7 @@ def favorite_item(request):
         fav.items.add(item)
         fav.save()
         print fav.items
+        print fav.user
     return HttpResponse('hello')
     # if item_id:
     #     fav = Favorite.objects.get(user=request.user)
