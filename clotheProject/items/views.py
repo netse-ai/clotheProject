@@ -22,7 +22,6 @@ def favorite_item(request):
     if request.method == "POST":
         id = request.POST['id']
         item = Item.objects.get(id=id)
-        item = Item.objects.get(id=id)
         fav.items.add(item)
         fav.save()
         print fav
