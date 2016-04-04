@@ -18,9 +18,9 @@ def item_view(request):
 
 @login_required
 def favorite_item(request):
-    print request.data
     fav, created = Favorite.objects.get_or_create(user=request.user)
     if request.method == "POST":
+        print request.POST.data
         id = request.POST['id']
         item = Item.objects.get(id=id)
         fav.items.add(item)
