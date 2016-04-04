@@ -12,7 +12,7 @@
 	<script type="text/javascript">
 		$(document).on('submit', '#add_favorite_form',function(e){
 			e.preventDefault();
-			var $fav = $('#fav').each();
+			var $fav = $('#fav');
 			$.ajax({
 				type: "POST",
 				url: "/items/favorites/",
