@@ -10,22 +10,23 @@
 	<title> Community </title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script type="text/javascript">
-		$(document).on('submit', '.add_favorite_form',function(e){
+		var csrftoken = $("input[name=csrfmiddlewaretoken]").val();
+		$(document).onclick('submit', '.add_favorite_form',function(e){
 			e.preventDefault();
-			var $fav = $('.fav');
+			var itemId = $(e.target).add('itemid');
 			$.ajax({
 				type: "POST",
 				url: "/items/favorites/",
 				data: {
-					id: $($fav).attr('data-itemid'),
-					csrfmiddlewaretoken:$("input[name=csrfmiddlewaretoken]").val()
+					id: itemId,
+					csrfmiddlewaretoken: csrftoken
 				},
 				success: function(){
-					alert("button works but is broken. Only the first Item instance is added")
+					alert("Added favorite" + itemId);
 
 				}
-			})
-		})
+			});
+		});
 	</script>
 	<style>
 
@@ -116,7 +117,7 @@
 	        <p>
 				<form class="add_favorite_form">
 					{% csrf_token %}
-					<button class='fav' type="submit" data-itemid="{{item.id}}" value="Favorite">Favorite
+					<button class='btn btn-primary' data-itemid="{{item.id}}" type="submit" value="Favorite">Favorite
 					<span class="glyphicon glyphicon-thumbs-up"</span></a>
 				</form>
 			</p>
