@@ -37,6 +37,7 @@
 		//         }
 		//     }
 		// });
+		var csrf_token = $("input[name=csrfmiddlewaretoken]").val();
 		$(document).on('submit', '#add_favorite_form',function(e){
 			e.preventDefault();
 			var itemId = $(e.target).data('itemid');
@@ -44,9 +45,8 @@
 				type: "POST",
 				url: "/items/favorites/",
 				data: {
-					id: itemId
-					csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val()
-
+					id: itemId,
+					csrfmiddlewaretoken: csrf_token
 				},
 				success: function(){
 					alert("Added favorite" + itemId);
