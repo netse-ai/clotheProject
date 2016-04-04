@@ -10,7 +10,7 @@
 	<title> Community </title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script type="text/javascript">
-		var csrftoken = $("input[name=csrfmiddlewaretoken]").val();
+		// var csrftoken = $("input[name=csrfmiddlewaretoken]").val();
 		$(document).on('submit', '.add_favorite_form',function(e){
 			e.preventDefault();
 			var itemId = $(e.target).data('itemid');
@@ -19,7 +19,7 @@
 				url: "/items/favorites/",
 				data: {
 					id: itemId,
-					csrfmiddlewaretoken: csrftoken
+					csrfmiddlewaretoken: '{{csrf_token}}',
 				},
 				success: function(){
 					alert("Added favorite" + itemId);
