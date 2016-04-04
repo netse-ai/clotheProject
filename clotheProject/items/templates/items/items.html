@@ -8,6 +8,25 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<title> Community </title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).on('submit', '#add_favorite_form',function(e){
+			e.preventDefault();
+			var $fav = $('#fav');
+			$.ajax({
+				type: "POST",
+				url: "/items/favorites/",
+				data: {
+					id: $($fav).attr('data-itemid'),
+					csrfmiddlewaretoken:$("input[name=csrfmiddlewaretoken]").val()
+				},
+				success: function(){
+					alert("button work")
+
+				}
+			})
+		})
+	</script>
 	<style>
 
 		/* http://css-tricks.com/perfect-full-page-background-image/ */
@@ -62,10 +81,11 @@
               <ul class="dropdown-menu">
                 <!-- <li><a href="register">Home</a></li> -->
                 <li><a href="/items/">Items</a></li>
+				{% if user %}
+				<li><a href="/users/profile/">Profile</a></li>
+				{% else %}
                 <li><a href="/users/login/">Login   <span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
                 <li role="separator" class="divider"></li>
-				{% if not user %}
-                <li><a href="/users/profile/">Profile</a></li>
 				{% endif %}
                 <li role="" class="divider"></li>
                 <li><a href="/users/logout/">Logout</a></li>
@@ -94,8 +114,10 @@
 			<h3>Price: {{item.price}}</h3>
 			<h3>Rating: {{item.rating}}</h3>
 	        <p>
-				<a href="#" class="btn btn-primary" role="button">Favorite!</a>
-				<a href="#" class="btn btn-default" role="button">Buy!</a>
+				<form id="add_favorite_form">
+					{% csrf_token %}
+					<button id='fav' class='btn btn-primary' type="submit" data-itemid="{{item.id}}" value="Favorite">Favorite</a>
+				</form>
 			</p>
 	      </div>
 	    </div>
@@ -114,6 +136,10 @@
 		<h1> --------------- </h1>
 		{% endfor %} -->
 
+<!-- <button id="about-btn"> Click Me - I'm Javascript on Speed</button>
 
+<p>This is a example</p>
+
+<p>This is another example</p> -->
 </body>
 </html>
