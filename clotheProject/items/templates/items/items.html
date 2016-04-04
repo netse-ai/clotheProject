@@ -17,7 +17,7 @@
 				type: "POST",
 				url: "/items/favorites/",
 				data: {
-					id: $($fav).attr('data-itemid').val(),
+					id: $($fav).attr('data-itemid'),
 					csrfmiddlewaretoken:$("input[name=csrfmiddlewaretoken]").val()
 				},
 				success: function(){
@@ -116,7 +116,9 @@
 	        <p>
 				<form id="add_favorite_form">
 					{% csrf_token %}
-					<button id='fav' class='btn btn-primary' type="submit" data-itemid="{{item.id}}" value="Favorite">Favorite {{item.id}}</a>
+					{% for id in item %}
+					<button id='fav' class='btn btn-primary' type="submit" data-itemid="{{id}}" value="Favorite">Favorite {{item.id}}</a>
+					{% endfor %}
 				</form>
 			</p>
 	      </div>
