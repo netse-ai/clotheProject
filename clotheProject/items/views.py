@@ -20,7 +20,7 @@ def item_view(request):
 def favorite_item(request):
     fav, created = Favorite.objects.get_or_create(user=request.user)
     if request.method == "POST":
-        print request.POST.data
+        print request.POST
         id = request.POST['id']
         item = Item.objects.get(id=id)
         fav.items.add(item)
