@@ -12,7 +12,7 @@
 	<script type="text/javascript">
 		$(document).on('submit', '#add_favorite_form',function(e){
 			e.preventDefault();
-			var $fav = $('#fav');
+			var $fav = $('.fav');
 			$.ajax({
 				type: "POST",
 				url: "/items/favorites/",
@@ -116,7 +116,7 @@
 	        <p>
 				<form id="add_favorite_form">
 					{% csrf_token %}
-					<button id='fav' class='btn btn-primary' type="submit" data-itemid="{{item.id}}" value="Favorite">Favorite
+					<button class='fav' class='btn btn-primary' type="submit" data-itemid="{{item.id}}" value="Favorite">Favorite
 					<span class="glyphicon glyphicon-thumbs-up"</span></a>
 				</form>
 			</p>
