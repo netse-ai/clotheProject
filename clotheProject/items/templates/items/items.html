@@ -11,7 +11,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script type="text/javascript">
 		var csrftoken = $("input[name=csrfmiddlewaretoken]").val();
-		$(document).onclick('submit', '.add_favorite_form',function(e){
+		$(document).on('submit', '.add_favorite_form',function(e){
 			e.preventDefault();
 			var itemId = $(e.target).add('itemid');
 			$.ajax({
