@@ -16,9 +16,13 @@
     			var $form = $(this);
     			var url = $form.attr("action");
     			var thisId = $form.attr("id");
-            	$.put(url, $form.serialize())
-    				.done(function(data){
-    					alert("Removed favorite " + thisId);
+            	$.ajax({
+                    url: url,
+                    type: 'PUT',
+                    id: thisId,
+                    success: function(){
+                        alert("Removed favorite " + thisId);
+                        }
     				});
     	        });
     	</script>
