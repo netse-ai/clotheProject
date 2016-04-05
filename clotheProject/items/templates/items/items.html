@@ -10,22 +10,18 @@
 	<title> Community </title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script type="text/javascript">
-		$(document).on('submit', '#add_favorite_form',function(e){
+	 	var csrf_token = $("input[name=csrfmiddlewaretoken]").val();
+		$(document).on('submit', '.add_favorite_form',function(e){
         	e.preventDefault();
-        	var itemId= $(e.target).data('data-itemid');  // jquery +1.4.3 or attr()
-        	$.ajax({
-	            type: "POST",
-	            url: "/items/favorites/",
-	            data: {
-	                id: 1,
-	                csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val()
-	            },
-	            success: function(){
-	                alert("Added favorite " + itemId);
-	            }
+			e.stopPropagation();
+			var $form = $(this);
+			var $url = $form.attr("action")
+			var thisId = $form.attr("id")
+        	$.post({url, $form.serialize())
+				.done(function(data){
+					alert("Added favorite " + thisId);
+				});
 	        });
-	    });
-
 	</script>
 	<style>
 
@@ -114,9 +110,11 @@
 			<h3>Price: {{item.price}}</h3>
 			<h3>Rating: {{item.rating}}</h3>
 	        <p>
-				<form id="add_favorite_form">
+				<form id="add_favorite_{{ item.id }}" class="add_favorite_form" method="POST" action='/items/favorites/'>
 					{% csrf_token %}
-					<button id="fav" class='btn btn-primary' data-itemid="{{item.id}}" type="submit" value="Favorite">Favorite
+					<inpt type="hidden" name="id" value="{{ item.id }}"
+					<button id="fav" class='btn btn-primary' type="submit" value="Favorite">
+					Favorite
 					<span class="glyphicon glyphicon-thumbs-up"</span></a>
 				</form>
 			</p>
