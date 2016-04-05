@@ -87,6 +87,7 @@
         <div class="row">
     	{% for name in user.favorite.items.all %}
     	  <div class="col-sm-6 col-md-4">
+              {{ name }}
             <!-- {% for item in user.favorites.items.all %} -->
     	    <div class="thumbnail">
     			{% if item.photo %}
