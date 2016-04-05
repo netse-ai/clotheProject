@@ -39,97 +39,67 @@
 
     	</style>
     </head>
-
-    <body class="body">
-        <nav class="navbar navbar-default">
-          <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="/register/">ClotheProject</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Profile<span class="sr-only">(current)</span></a></li>
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Site <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <!-- <li><a href="register">Home</a></li> -->
-                    <li><a href="/items/">Items</a></li>
-                    {% if not profile %}
-                    <li><a href="/users/login/">Login<span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
-                    {% endif %}
-                    <li role="separator" class="divider"></li>
-                    <li role="" class="divider"></li>
-                    <li><a href="/users/logout/">Logout</a></li>
-                  </ul>
-                </li>
-              </ul>
-              <!-- <form class="navbar-form navbar-left" role="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Search">
-                </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-              </form> -->
-            </div><!-- /.navbar-collapse -->
-          </div><!-- /.container-fluid -->
-        </nav>
-        {% if profile %}
-        <div class="panel panel-default">
-          <!-- Default panel contents -->
-          <div class="panel-heading">User</div>
-          <div class="panel-body">
-            <h1>User: {{ profile.user.username }}</h1>
-          </div>
-
-          <!-- Table -->
-          <!-- <table class="table">
-              <thead>
-                <th>Item</th>
-                <th>Price</th>
-                <th>Description</th>
-            </thead>
-            <tbody>
-                {% for name in user.favorite.items.all %}
-                <tr>
-                    <th scope="row">{{name}}</th>
-                    {% for item in user.favorites.items.all %}
-                    <td>{{item}}</td>
-                    <td>{{item.price}}</td>
-                    <td>{{item.description}}</td>
-                    {% endfor %}
-                {% endfor %}
-                </tr>
-            </tbody>
-          </table>
+<body class="body">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/register/">ClotheProject</a>
         </div>
-        {% endif %} -->
 
-        {% if profile %}
-        <div class="row">
-    	{% for fav in favorites %}
-    	  <div class="col-sm-6 col-md-4">
-    	    <div class="thumbnail">
-    			{% if fav.photo %}
-    	      <img src="{{ MEDIA_URL }}{{fav.photo.url}}">
-    		    {% endif %}
-    	      <div class="caption">
-    	        <h3>{{fav.name}}</h3>
-    	        <p>{{fav.description}}</p>
-    			<h3>Price: {{fav.price}}</h3>
-    			<h3>Rating: {{fav.rating}}</h3>
-    	      </div>
-    	    </div>
-    	  </div>
-    	  {% endfor %}
-    	</div>
-        {% endif %}
-    </body>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Profile<span class="sr-only">(current)</span></a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Site <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <!-- <li><a href="register">Home</a></li> -->
+                <li><a href="/items/">Items</a></li>
+                {% if not profile %}
+                <li><a href="/users/login/">Login<span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
+                {% endif %}
+                <li role="separator" class="divider"></li>
+                <li role="" class="divider"></li>
+                <li><a href="/users/logout/">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    {% if profile %}
+    <div class="panel panel-default">
+      <!-- Default panel contents -->
+      <div class="panel-heading">User</div>
+      <div class="panel-body">
+        <h1>User: {{ profile.user.username }}</h1>
+      </div>
+
+    {% if profile %}
+    <div class="row">
+	{% for fav in favorites %}
+	  <div class="col-sm-6 col-md-4">
+	    <div class="thumbnail">
+			{% if fav.photo %}
+	      <img src="{{ MEDIA_URL }}{{fav.photo.url}}">
+		    {% endif %}
+	      <div class="caption">
+	        <h3>{{fav.name}}</h3>
+	        <p>{{fav.description}}</p>
+			<h3>Price: {{fav.price}}</h3>
+			<h3>Rating: {{fav.rating}}</h3>
+	      </div>
+	    </div>
+	  </div>
+	  {% endfor %}
+	</div>
+    {% endif %}
+</body>
 </html>
