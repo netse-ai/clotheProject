@@ -44,30 +44,16 @@ def user_profile(request):
     context = {'profile': profile, 'user':user, 'favorites':favorites}
     return render(request, template, context)
 
-# def register(request):
-#     registered = False
-#     if request.method == 'POST':
-#         user_form = UserForm(data=request.POST)
-#         profile_form = UserProfileForm(data=request.POST)
-#         if user_form.is_valid() and profile_form.is_valid():
-#             user = user_form.save()
-#             user.set_password(user.password)
-#             user.save()
-#             profile = profile_form.save(commit=False)
-#             profile.user = user
-#             profile.save()
-#             registered = True
-#         else:
-#             print user_form.errors, profile_form.errors
-#     else:
-#         user_form = UserForm()
-#         profile_form = UserProfileForm()
-#     template = "users/register.html"
-#     context = {'user_form': user_form,
-#                'profile_form': profile_form,
-#                'registered': registered
-#                }
-#     return render(request, template, context)
+@login_required
+def unfavorite_item(request):
+    print request
+    fav = Favorite.objects.get(user=request.user)
+    if request.method == "POST":
+        if = request.POST['id']
+        item = Item.objects.get(id=id)
+        fav.items.remove(item)
+        fav.save()
+    return HttpResponseRedirect('/users/profile/')
 
 
 @login_required
