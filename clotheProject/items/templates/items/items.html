@@ -142,9 +142,8 @@
 			<h3>Price: {{item.price}}</h3>
 			<h3>Rating: {{item.rating}}</h3>
 	        <p>
-				<form id="#add_favorite_form">
-					{% csrf_token %}
-					<button id="#fav" class='btn btn-primary' data-itemid="{{item.id}}" type="submit" value="Favorite">Favorite
+				<form id="add_favorite_form">
+					<button id="fav" class='btn btn-primary' data-itemid="{{item.id}}" type="submit" value="Favorite">Favorite
 					<span class="glyphicon glyphicon-thumbs-up"</span></a>
 				</form>
 			</p>
