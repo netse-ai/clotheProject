@@ -113,7 +113,7 @@
     			<h3>Price: {{fav.price}}</h3>
     			<h3>Rating: {{fav.rating}}</h3>
                 <p>
-    				<form id="remove_favorite_{{ fav.id }}" class="remove_favorite_form" method="DELETE" action="/users/unfavorite_item/">
+    				<form id="remove_favorite_{{ fav.id }}" class="remove_favorite_form" method="PUT" action="/users/unfavorite/">
     					{% csrf_token %}
     					<input type="hidden" name="id" value="{{ fav.id }}"/>
     					<button id="fav" class='btn btn-primary' type="submit" value="Unfavorite">
