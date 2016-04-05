@@ -28,14 +28,3 @@ def favorite_item(request):
         fav.items.add(item)
         fav.save()
     return HttpResponseRedirect('/users/profile/')
-
-@login_required
-def unfavorite_item(request):
-    print request
-    fav = Favorite.objects.get(user=request.user)
-    if request.method == "POST":
-        if = request.POST['id']
-        item = Item.objects.get(id=id)
-        fav.items.remove(item)
-        fav.save()
-    return HttpResponseRedirect('/users/profile/')
