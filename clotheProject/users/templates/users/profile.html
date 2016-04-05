@@ -82,3 +82,20 @@
           </table>
         </div>
         {% endif %}
+
+        <div class="row">
+        {% for item in user.favorites.items.all %}
+    	  <div class="col-sm-6 col-md-4">
+    	    <div class="thumbnail">
+    			{% if item.photo %}
+    	      <img src="{{ MEDIA_URL }}{{user.favorites.item.photo.url}}">
+    		    {% endif %}
+    	      <div class="caption">
+                <td>{{item}}</td>
+                <td>{{item.price}}</td>
+                <td>{{item.description}}</td>
+    	      </div>
+    	    </div>
+    	  </div>
+    	  {% endfor %}
+    	</div>
