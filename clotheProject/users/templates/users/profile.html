@@ -114,11 +114,11 @@
 
         {% if profile %}
         <div class="row">
-    	{% for name in user.favorite.items.all %}
+    	{% for fav in favorites %}
     	  <div class="col-sm-6 col-md-4">
-              {{ name }}
+              {{ fav }}
             <!-- {% for item in user.favorites.items.all %} -->
-    	    <div class="thumbnail">
+    	    <!-- <div class="thumbnail">
     			{% if name.photo %}
     	      <img src="{{ MEDIA_URL }}{{item.photo.url}}">
     		    {% endif %}
@@ -127,7 +127,7 @@
     	        <p>{{name.description}}</p>
     			<h3>Price: {{name.price}}</h3>
     			<h3>Rating: {{name.rating}}</h3>
-    	      </div>
+    	      </div> -->
     	    </div>
             <!-- {% endfor %} -->
     	  </div>
