@@ -19,7 +19,7 @@
                     url: url,
                     type: 'PUT',
                     id: thisId,
-                    csrfmiddlewaretoken:$ ("input[name=csrfmiddlewaretoken]").val(),
+                    csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val(),
                     success: function(){
                         alert("Removed favorite " + thisId);
                         }
