@@ -38,23 +38,22 @@
 		//         }
 		//     }
 		// });
-		$(document).on('submit', '#add_favorite_form',function(e){
-			// var csrf_token = $("input[name=csrfmiddlewaretoken]").val();
-			e.preventDefault();
-			var itemId = $(e.target).data('data-itemid');
-			console.log(itemId);
-			$.ajax({
-				type: "POST",
-				url: "/items/favorites/",
-				data: {
-					id: itemid,
-				},
-				success: function(){
-					alert("Added favorite" + itemId);
+		    $(document).on('submit', '#add_favorite_form',function(e){
+            e.preventDefault();
+            var $fav = $('#fav');
+            $.ajax({
+                type: "POST",
+                url: "/items/favorites/",
+                data: {
+                    id: $($fav).attr('data-itemid'),
+                    csrfmiddlewaretoken:$("input[name=csrfmiddlewaretoken]").val()
+                },
+                success: function(){
+                    alert("button works but is broken. Only the first Item instance is added to favorites")
 
-				}
-			});
-		});
+                }
+            });
+        });
 	</script>
 	<style>
 
@@ -144,7 +143,7 @@
 			<h3>Rating: {{item.rating}}</h3>
 	        <p>
 				<form id="#add_favorite_form">
-					<button class='btn btn-primary' data-itemid="{{item.id}}" type="submit" value="Favorite">Favorite
+					<button id="#fav" class='btn btn-primary' data-itemid="{{item.id}}" type="submit" value="Favorite">Favorite
 					<span class="glyphicon glyphicon-thumbs-up"</span></a>
 				</form>
 			</p>
