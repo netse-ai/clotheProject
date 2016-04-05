@@ -20,6 +20,7 @@
                     url: url,
                     type: 'PUT',
                     id: thisId,
+                    csrfmiddlewaretoken:csrf_token,
                     success: function(){
                         alert("Removed favorite " + thisId);
                         }
