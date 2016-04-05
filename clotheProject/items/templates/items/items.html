@@ -40,7 +40,8 @@
 		$(document).on('submit', '#add_favorite_form',function(e){
 			// var csrf_token = $("input[name=csrfmiddlewaretoken]").val();
 			e.preventDefault();
-			var itemId = $(e.target).attr('itemid');
+			console.log(e);
+			var itemId = $(e.target).attr('data-itemid');
 			$.ajax({
 				type: "POST",
 				url: "/items/favorites/",
