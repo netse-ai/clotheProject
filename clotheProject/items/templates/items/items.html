@@ -15,8 +15,8 @@
         	e.preventDefault();
 			e.stopPropagation();
 			var $form = $(this);
-			var $url = $form.attr("action")
-			var thisId = $form.attr("id")
+			var $url = $form.attr("action");
+			var thisId = $form.attr("id");
         	$.post({url, $form.serialize())
 				.done(function(data){
 					alert("Added favorite " + thisId);
