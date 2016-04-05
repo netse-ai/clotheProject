@@ -29,7 +29,7 @@ def favorite_item(request):
         fav.save()
         # print fav.items
         # print fav.user
-    return HttpResponse('hello')
+    return HttpResponseRedirect('/users/profile/')
     # if item_id:
     #     fav = Favorite.objects.get(user=request.user)
     #     if fav:
