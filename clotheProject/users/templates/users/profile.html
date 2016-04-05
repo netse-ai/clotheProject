@@ -19,8 +19,10 @@
             	$.ajax({
                     url: url,
                     type: 'PUT',
-                    id: thisId,
-                    csrfmiddlewaretoken: csrftoken
+                    data: {
+                        id: thisId,
+                        csrfmiddlewaretoken: csrftoken    
+                    }
                 },
                 success: function(){
                     alert("Removed favorite " + thisId);
