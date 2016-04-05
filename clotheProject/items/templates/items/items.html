@@ -45,8 +45,8 @@
                 type: "POST",
                 url: "/items/favorites/",
                 data: {
-                    id: $($fav).attr('data-itemid'),
-                    csrfmiddlewaretoken:$("input[name=csrfmiddlewaretoken]").val()
+                    id: $($fav).attr('data-itemid')
+                    // csrfmiddlewaretoken:$("input[name=csrfmiddlewaretoken]").val()
                 },
                 success: function(){
                     alert("button works but is broken. Only the first Item instance is added to favorites")
