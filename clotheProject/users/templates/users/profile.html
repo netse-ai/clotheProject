@@ -114,9 +114,9 @@
 
         {% if profile %}
         <div class="row">
-    	{% for fav in favorites %}
+    	{% for item in favorites %}
     	  <div class="col-sm-6 col-md-4">
-              {{ fav }}
+              {{ item.name }}
             <!-- {% for item in user.favorites.items.all %} -->
     	    <!-- <div class="thumbnail">
     			{% if name.photo %}
