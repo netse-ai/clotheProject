@@ -49,7 +49,7 @@ def unfavorite_item(request):
     print request
     fav = Favorite.objects.get(user=request.user)
     if request.method == "POST":
-        if = request.POST['id']
+        id = request.POST['id']
         item = Item.objects.get(id=id)
         fav.items.remove(item)
         fav.save()
