@@ -20,12 +20,13 @@
                     url: url,
                     type: 'PUT',
                     id: thisId,
-                    csrfmiddlewaretoken: csrftoken,
-                    success: function(){
-                        alert("Removed favorite " + thisId);
-                        }
-    				});
-    	        });
+                    csrfmiddlewaretoken: csrftoken
+                },
+                success: function(){
+                    alert("Removed favorite " + thisId);
+                    }
+    			});
+    	    });
     	</script>
         <!-- Is anyone getting tired of repeatedly entering the header over and over?? -->
     	<style>
@@ -118,7 +119,7 @@
     					{% csrf_token %}
     					<input type="hidden" name="id" value="{{ fav.id }}"/>
     					<button id="fav" class='btn btn-primary' type="submit" value="Unfavorite">
-    					Favorite
+    					Favorite {{ fav.id }}
     					<span class="glyphicon glyphicon-thumbs-up"</span></a>
     				</form>
     			</p>
