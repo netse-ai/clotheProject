@@ -119,14 +119,14 @@
               {{ name }}
             <!-- {% for item in user.favorites.items.all %} -->
     	    <div class="thumbnail">
-    			{% if item.photo %}
+    			{% if name.photo %}
     	      <img src="{{ MEDIA_URL }}{{item.photo.url}}">
     		    {% endif %}
     	      <div class="caption">
-    	        <h3>{{item.name}}</h3>
-    	        <p>{{item.description}}</p>
-    			<h3>Price: {{item.price}}</h3>
-    			<h3>Rating: {{item.rating}}</h3>
+    	        <h3>{{name.name}}</h3>
+    	        <p>{{name.description}}</p>
+    			<h3>Price: {{name.price}}</h3>
+    			<h3>Rating: {{name.rating}}</h3>
     	      </div>
     	    </div>
             <!-- {% endfor %} -->
