@@ -12,7 +12,7 @@
 	<script type="text/javascript">
 		$(document).on('submit', '#add_favorite_form',function(e){
         	e.preventDefault();
-        	var itemId= $(e.target).data('itemid');  // jquery +1.4.3 or attr()
+        	var itemId= $(e.target).data('data-itemid');  // jquery +1.4.3 or attr()
         	$.ajax({
 	            type: "POST",
 	            url: "/items/favorites/",
