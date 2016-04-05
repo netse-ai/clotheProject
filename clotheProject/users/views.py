@@ -38,7 +38,8 @@ def user_login(request):
 def user_profile(request):
     user = User.objects.get(id=request.user.id)
     profile = UserProfile.objects.get(user=user)
-    favorites = Favorite.objects.get(user=user)
+    favorites = user.favorite.items.all()
+    print favorites
     template = 'users/profile.html'
     context = {'profile': profile, 'user':user, 'favorites':favorites}
     return render(request, template, context)
