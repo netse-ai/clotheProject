@@ -16,7 +16,7 @@
     			var $form = $(this);
     			var url = $form.attr("action");
     			var thisId = $form.attr("id");
-            	$.post(url, $form.serialize())
+            	$.put(url, $form.serialize())
     				.done(function(data){
     					alert("Removed favorite " + thisId);
     				});
@@ -109,7 +109,7 @@
     			<h3>Price: {{fav.price}}</h3>
     			<h3>Rating: {{fav.rating}}</h3>
                 <p>
-    				<form id="remove_favorite_{{ fav.id }}" class="remove_favorite_form" method="POST" action="/users/profile/">
+    				<form id="remove_favorite_{{ fav.id }}" class="remove_favorite_form" method="DELETE" action="/users/unfavorite_item/">
     					{% csrf_token %}
     					<input type="hidden" name="id" value="{{ fav.id }}"/>
     					<button id="fav" class='btn btn-primary' type="submit" value="Unfavorite">
