@@ -37,11 +37,10 @@
 		//         }
 		//     }
 		// });
-		$(document).on('submit', '#add_favorite_form',function(e){
+		$(document).on('submit', '.btn btn-primary',function(e){
 			// var csrf_token = $("input[name=csrfmiddlewaretoken]").val();
 			e.preventDefault();
-			console.log(e);
-			var itemId = $(e.target).attr('data-itemid');
+			var itemId = $(e.target).data('data-itemid');
 			$.ajax({
 				type: "POST",
 				url: "/items/favorites/",
