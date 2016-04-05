@@ -6,6 +6,7 @@ from django.views.generic.edit import UpdateView
 from django.http import HttpResponse, HttpResponseRedirect
 
 from users.models import UserProfile
+from items.models import Favorite
 
 
 def users_view(request):
