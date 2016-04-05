@@ -53,7 +53,7 @@ def unfavorite_item(request):
         item = Item.objects.get(id=id)
         fav.items.remove(item)
         fav.save()
-    return HttpResponseRedirect('/items/unfavorite/')
+    return HttpResponseRedirect('/users/profile/')
 
 
 @login_required
