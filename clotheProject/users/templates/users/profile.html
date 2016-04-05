@@ -8,6 +8,20 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     	<title> clotheProject profile</title>
+    	<script type="text/javascript">
+    	 	var csrf_token = $("input[name=csrfmiddlewaretoken]").val();
+    		$(document).on('submit', '.remove_favorite_form',function(e){
+            	e.preventDefault();
+    			e.stopPropagation();
+    			var $form = $(this);
+    			var url = $form.attr("action");
+    			var thisId = $form.attr("id");
+            	$.post(url, $form.serialize())
+    				.done(function(data){
+    					alert("Removed favorite " + thisId);
+    				});
+    	        });
+    	</script>
         <!-- Is anyone getting tired of repeatedly entering the header over and over?? -->
     	<style>
 
@@ -94,6 +108,15 @@
     	        <p>{{fav.description}}</p>
     			<h3>Price: {{fav.price}}</h3>
     			<h3>Rating: {{fav.rating}}</h3>
+                <p>
+    				<form id="remove_favorite_{{ fav.id }}" class="remove_favorite_form" method="POST" action="/users/profile/">
+    					{% csrf_token %}
+    					<input type="hidden" name="id" value="{{ fav.id }}"/>
+    					<button id="fav" class='btn btn-primary' type="submit" value="Unfavorite">
+    					Favorite
+    					<span class="glyphicon glyphicon-thumbs-up"</span></a>
+    				</form>
+    			</p>
     	      </div>
     	    </div>
     	  </div>
