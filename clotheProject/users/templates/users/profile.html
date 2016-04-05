@@ -116,10 +116,9 @@
         <div class="row">
     	{% for fav in favorites %}
     	  <div class="col-sm-6 col-md-4">
-              {{ fav.name }}
     	    <div class="thumbnail">
     			{% if fav.photo %}
-    	      <img src="{{ MEDIA_URL }}{{item.photo.url}}">
+    	      <img src="{{ MEDIA_URL }}{{fav.photo.url}}">
     		    {% endif %}
     	      <div class="caption">
     	        <h3>{{fav.name}}</h3>
