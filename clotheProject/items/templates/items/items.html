@@ -110,7 +110,7 @@
 			<h3>Price: {{item.price}}</h3>
 			<h3>Rating: {{item.rating}}</h3>
 	        <p>
-				<form id="add_favorite_{{ item.id }}" class="add_favorite_form" method="POST" action='/items/favorites/'>
+				<form id="add_favorite_{{ item.id }}" class="add_favorite_form" method="POST" action='items/favorites'>
 					{% csrf_token %}
 					<inpt type="hidden" name="id" value="{{ item.id }}"
 					<button id="fav" class='btn btn-primary' type="submit" value="Favorite">
