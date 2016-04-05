@@ -6,6 +6,7 @@ from django.views.generic.edit import UpdateView
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 
+
 from items.models import Item, Favorite
 
 
@@ -21,17 +22,20 @@ def favorite_item(request):
     print request
     fav, created = Favorite.objects.get_or_create(user=request.user)
     if request.method == "POST":
-        # print request.POST
         id = request.POST['id']
         item = Item.objects.get(id=id)
         print item
         fav.items.add(item)
         fav.save()
-        # print fav.items
-        # print fav.user
     return HttpResponseRedirect('/users/profile/')
-    # if item_id:
-    #     fav = Favorite.objects.get(user=request.user)
-    #     if fav:
-    #         fav.save()
-    #         fav.items.add(item=int(item_id))
+
+@login_required
+def unfavorite_item(request):
+    print request
+    fav = Favorite.objects.get(user=request.user)
+    if request.method == "POST":
+        if = request.POST['id']
+        item = Item.objects.get(id=id)
+        fav.items.remove(item)
+        fav.save()
+    return HttpResponseRedirect('/users/profile/')
