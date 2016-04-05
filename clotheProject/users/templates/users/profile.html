@@ -9,7 +9,6 @@
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     	<title> clotheProject profile</title>
     	<script type="text/javascript">
-    	 	var csrf_token = $("input[name=csrfmiddlewaretoken]").val();
     		$(document).on('submit', '.remove_favorite_form',function(e){
             	e.preventDefault();
     			e.stopPropagation();
@@ -20,7 +19,7 @@
                     url: url,
                     type: 'PUT',
                     id: thisId,
-                    csrfmiddlewaretoken:csrf_token,
+                    csrfmiddlewaretoken:$ ("input[name=csrfmiddlewaretoken]").val(),
                     success: function(){
                         alert("Removed favorite " + thisId);
                         }
