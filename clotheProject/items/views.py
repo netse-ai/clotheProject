@@ -5,6 +5,7 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic.edit import UpdateView
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
+from django.views.decorators.csrf import csrf_exempt
 
 from items.models import Item, Favorite
 
@@ -18,6 +19,7 @@ def item_view(request):
 
 @login_required
 def favorite_item(request):
+    print request
     fav, created = Favorite.objects.get_or_create(user=request.user)
     if request.method == "POST":
         # print request.POST
