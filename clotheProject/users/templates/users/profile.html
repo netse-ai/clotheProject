@@ -34,6 +34,7 @@
     			var thisId = $form.attr("id");
             	$.ajax({
                     url: url,
+                    id: thisId,
                     type: 'DELETE',
                     beforeSend: function(xhr) {
                         xhr.setRequestHeader("X-CSRFToken", getCookie("csrftoken"));
