@@ -25,7 +25,8 @@
                     },
                     success: function(){
                         alert("Removed favorite " + thisId);
-                    }
+                    },
+                    headers: { 'X_METHODOVERRIDE': 'DELETE' }
     			});
     	    });
     	</script>
