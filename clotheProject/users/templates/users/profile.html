@@ -21,11 +21,10 @@
                     type: 'PUT',
                     data: {
                         id: thisId,
-                        csrfmiddlewaretoken: csrftoken    
+                        csrfmiddlewaretoken: csrftoken
                     }
-                },
-                success: function(){
-                    alert("Removed favorite " + thisId);
+                    success: function(){
+                        alert("Removed favorite " + thisId);
                     }
     			});
     	    });
