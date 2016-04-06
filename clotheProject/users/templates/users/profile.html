@@ -9,7 +9,22 @@
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     	<title> clotheProject profile</title>
     	<script type="text/javascript">
-            var csrftoken = $("input[name=csrfmiddlewaretoken]").val();
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie != '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+
+            // var csrftoken = $("input[name=csrfmiddlewaretoken]").val();
     		$(document).on('submit', '.remove_favorite_form',function(e){
             	e.preventDefault();
     			e.stopPropagation();
@@ -20,7 +35,7 @@
                     url: url,
                     type: 'DELETE',
                     beforeSend: function(xhr) {
-                        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                        xhr.setRequestHeader("X-CSRFToken", getCookie("csrftoken"));
                     },
                     success: function(){
                         alert("Removed favorite " + thisId);
