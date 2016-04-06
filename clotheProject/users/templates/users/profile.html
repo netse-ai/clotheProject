@@ -20,7 +20,7 @@
                     url: url,
                     type: 'DELETE',
                     beforeSend: function(xhr) {
-                        xhr.setRequestHeader("X-CSRFToken", getCookie("csrftoken"));
+                        xhr.setRequestHeader("X-CSRFToken", csrftoken));
                     },
                     success: function(){
                         alert("Removed favorite " + thisId);
