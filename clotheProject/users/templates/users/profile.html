@@ -9,7 +9,7 @@
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     	<title> clotheProject profile</title>
     	<script type="text/javascript">
-            var csrftoken = $("input[name=csrfmiddlewaretoken]").val();
+            // var csrftoken = $("input[name=csrfmiddlewaretoken]").val();
     		$(document).on('submit', '.remove_favorite_form',function(e){
             	e.preventDefault();
     			e.stopPropagation();
@@ -19,10 +19,10 @@
             	$.ajax({
                     url: url,
                     type: 'PUT',
-                    data: {
-                        id: thisId,
-                        csrfmiddlewaretoken: csrftoken
-                    },
+                    // data: {
+                    //     id: thisId,
+                    //     csrfmiddlewaretoken: csrftoken
+                    // },
                     success: function(){
                         alert("Removed favorite " + thisId);
                     }
@@ -116,7 +116,7 @@
     			<h3>Price: {{fav.price}}</h3>
     			<h3>Rating: {{fav.rating}}</h3>
                 <p>
-    				<form id="remove_favorite_{{ fav.id }}" class="remove_favorite_form" method="PUT" action="/users/unfavorite/">
+    				<form id="remove_favorite_{{ fav.id }}" class="remove_favorite_form" method="DELETE" action="/users/unfavorite/">
     					{% csrf_token %}
     					<input type="hidden" name="id" value="{{ fav.id }}"/>
     					<button id="fav" class='btn btn-primary' type="submit" value="Unfavorite">
