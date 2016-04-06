@@ -19,14 +19,12 @@
             	$.ajax({
                     url: url,
                     type: 'DELETE',
-                    data: {
-                        id: thisId,
-                        csrfmiddlewaretoken: csrftoken
-                    },
+                    beforeSend: function(xhr) {
+                        xhr.setRequestHeader("X-CSRFToken", getCookie("csrftoken"));
+                    }
                     success: function(){
                         alert("Removed favorite " + thisId);
                     },
-                    headers: { 'X_METHODOVERRIDE': 'DELETE' }
     			});
     	    });
     	</script>
