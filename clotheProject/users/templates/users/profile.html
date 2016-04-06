@@ -31,7 +31,8 @@
     			e.stopPropagation();
     			var $form = $(this);
     			var url = $form.attr("action");
-    			var thisId = $form.attr("id").serialize();
+    			var thisId = $form.attr("id");
+                thisid.serialize();
             	$.ajax({
                     url: url,
                     id: 1,
