@@ -48,7 +48,7 @@ def user_profile(request):
 def unfavorite_item(request):
     print request
     fav = Favorite.objects.get(user=request.user)
-    if request.method == "PUT":
+    if request.method == "DELETE":
         id = request.POST['id']
         item = Item.objects.get(id=id)
         fav.items.remove(item)
