@@ -31,10 +31,10 @@
     			e.stopPropagation();
     			var $form = $(this);
     			var url = $form.attr("action");
-    			var thisId = $form.attr("id");
+    			// var thisId = $form.attr("id");
             	$.ajax({
                     url: url,
-                    id: thisId,
+                    id: $form.attr("id"),
                     type: 'DELETE',
                     beforeSend: function(xhr) {
                         xhr.setRequestHeader("X-CSRFToken", getCookie("csrftoken"));
