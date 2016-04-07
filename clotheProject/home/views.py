@@ -5,6 +5,7 @@ from django.db.models.signals import post_save
 from django.shortcuts import render
 from home.forms import UserForm
 from users.models import UserProfile
+from items.models import Favorite
 # Create your views here.
 
 def register(request):
