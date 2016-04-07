@@ -19,6 +19,7 @@ def register(request):
             user.set_password(user.password)
             user.save()
             UserProfile.objects.get_or_create(user=user)
+            Favorite.objects.get_or_create(user=user)
             registered = True
             user = authenticate(username=username, password=password)
             if registered:
