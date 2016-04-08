@@ -20,8 +20,8 @@ class FavoriteSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         user_data = validated_data.pop('user')
         item_data = validated_data.pop('items')
-        user = User.objects.get(user=user_data)
-        favorite = Favorite.objects.get_or_create(user=user, items=items)
+        user = User.objects.get(id=22)
+        favorite = Favorite.objects.get_or_create(user=user, items=item_data)
         return favorite
 
 
@@ -58,5 +58,8 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     #     instance.likes = profile_data.get('likes')
     #     instance.dislikes = profile_data.get('dislikes')
     #     instance.photo = profile_data.get('photo')
+    #     instance.save()
+    #     return instance
+to')
     #     instance.save()
     #     return instance
