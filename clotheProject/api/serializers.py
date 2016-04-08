@@ -25,10 +25,6 @@ class FavoriteSerializer(serializers.ModelSerializer):
         return favorite
 
 
-
-
-
-
 class UserProfileSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = UserProfile
@@ -60,6 +56,5 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     #     instance.photo = profile_data.get('photo')
     #     instance.save()
     #     return instance
-to')
     #     instance.save()
     #     return instance
