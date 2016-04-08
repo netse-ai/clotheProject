@@ -21,7 +21,9 @@ class FavoriteSerializer(serializers.ModelSerializer):
         user_data = validated_data.pop('user')
         item_data = validated_data.pop('items')
         user = User.objects.get(id=22)
-        favorite = Favorite.objects.get_or_create(user=22, items=item_data)
+        favorite = Favorite.objects.get_or_create(user=22)
+        for item in item_data:
+            favorite.items.add(item)
         return favorite
 
 
