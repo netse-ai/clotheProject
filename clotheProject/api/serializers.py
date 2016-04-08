@@ -18,8 +18,13 @@ class FavoriteSerializer(serializers.ModelSerializer):
         fields = ('id', 'user', 'items')
 
     def create(self, validated_data):
-        print validated_data
-        
+        # user = validated_data.pop('user')
+        favorites = Favorite.objects.get_or_create(**validated_data)
+        return favorites
+
+
+
+
 
 
 class UserProfileSerializer(serializers.HyperlinkedModelSerializer):
