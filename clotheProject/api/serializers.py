@@ -17,6 +17,10 @@ class FavoriteSerializer(serializers.ModelSerializer):
         model = Favorite
         fields = ('id', 'user', 'items')
 
+    def create(self, validated_data):
+        print validated_data
+        
+
 
 class UserProfileSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
