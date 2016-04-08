@@ -18,9 +18,10 @@ class FavoriteSerializer(serializers.ModelSerializer):
         fields = ('id', 'user', 'items')
 
     def create(self, validated_data):
-        # user = validated_data.pop('user')
-        favorites = Favorite.objects.get_or_create(**validated_data)
-        return favorites
+        user = validated_data.pop('user')
+        items = validated_data.pop('items')
+        favorite = Favorite.objects.get_or_create(user=user, items=items)
+        return favorite
 
 
 
