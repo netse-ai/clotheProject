@@ -23,4 +23,4 @@ class UnfavoriteForm(forms.ModelForm):
 
     class Meta:
         model = Favorite
-        exclude = ('user')
+        exclude = ('user',)
