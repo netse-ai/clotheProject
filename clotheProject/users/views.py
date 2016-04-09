@@ -51,6 +51,7 @@ def unfavorite_item(request):
     template = 'users/profile.html'
     fav = Favorite.objects.get(user=request.user)
     if request.method == "PUT":
+        print "put"
         # id = request.POST['id']
         # item = Item.objects.get(id=id)
         # fav.items.remove(item)
