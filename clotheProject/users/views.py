@@ -7,7 +7,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 
 from users.models import UserProfile
 from items.models import Favorite
-from items.forms import UnfavoriteForm
+from users.forms import UnfavoriteForm
 
 
 def users_view(request):
