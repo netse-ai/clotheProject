@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from users.models import UserProfile
+from users.models import UserProfile, Favorite
 
 
 class UserForm(forms.ModelForm):
