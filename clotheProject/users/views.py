@@ -41,29 +41,37 @@ def user_profile(request):
     profile = UserProfile.objects.get(user=user)
     favorites = user.favorite.items.all()
     print favorites
-    template = 'users/profile.html'
-    context = {'profile': profile, 'user':user, 'favorites':favorites}
-    return render(request, template, context)
-
-@login_required
-def unfavorite_item(request):
-    print request
-    template = 'users/profile.html'
-    fav = Favorite.objects.get(user=request.user)
     if request.method == "PUT":
         print "put"
-        # id = request.POST['id']
-        # item = Item.objects.get(id=id)
-        # fav.items.remove(item)
-        # fav.save()
-        # print fav
         form = UnfavoriteForm(request.PUT)
         if form.is_valid():
             print form.cleaned_data
             return HttpResponseRedirect('/users/profile/')
     else:
         form = UnfavoriteForm()
-    return render(request, template, {'form': form})
+        template = 'users/profile.html'
+        context = {'profile': profile, 'user':user, 'favorites':favorites, 'form':form}
+    return render(request, template, context)
+
+# @login_required
+# def unfavorite_item(request):
+#     print request
+#     template = 'users/profile.html'
+#     fav = Favorite.objects.get(user=request.user)
+#     if request.method == "PUT":
+#         print "put"
+#         # id = request.POST['id']
+#         # item = Item.objects.get(id=id)
+#         # fav.items.remove(item)
+#         # fav.save()
+#         # print fav
+#         form = UnfavoriteForm(request.PUT)
+#         if form.is_valid():
+#             print form.cleaned_data
+#             return HttpResponseRedirect('/users/profile/')
+#     else:
+#         form = UnfavoriteForm()
+#     return render(request, template, {'form': form})
 
 
 @login_required
