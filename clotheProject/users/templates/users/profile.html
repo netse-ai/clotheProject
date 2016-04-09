@@ -8,7 +8,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     	<title> clotheProject profile</title>
-    	<script type="text/javascript">
+    	<!-- <script type="text/javascript">
         function getCookie(name) {
             var cookieValue = null;
             if (document.cookie && document.cookie != '') {
@@ -59,7 +59,7 @@
                     }
     			});
     	    });
-    	</script>
+    	</script> -->
         <!-- Is anyone getting tired of repeatedly entering the header over and over?? -->
     	<style>
 
@@ -147,9 +147,10 @@
     			<h3>Price: {{fav.price}}</h3>
     			<h3>Rating: {{fav.rating}}</h3>
                 <p>
-    				<form id="remove_favorite_{{ fav.id }}" class="remove_favorite_form" method="DELETE" action="/users/unfavorite/">
+    				<form id="remove_favorite_{{ fav.id }}" class="remove_favorite_form" method="PUT" action="/users/unfavorite/">
     					{% csrf_token %}
     					<input type="hidden" name="id" value="{{ fav.id }}"/>
+                        {{form}}
     					<button id="fav" class='btn btn-primary' type="submit" value="Unfavorite">
     					Favorite {{ fav.id }}
     					<span class="glyphicon glyphicon-thumbs-up"</span></a>

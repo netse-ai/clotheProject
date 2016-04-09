@@ -7,6 +7,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 
 from users.models import UserProfile
 from items.models import Favorite
+from items.forms import UnfavoriteForm
 
 
 def users_view(request):
@@ -47,14 +48,21 @@ def user_profile(request):
 @login_required
 def unfavorite_item(request):
     print request
+    template = 'users/profile.html'
     fav = Favorite.objects.get(user=request.user)
-    if request.method == "DELETE":
-        id = request.POST['id']
-        item = Item.objects.get(id=id)
-        fav.items.remove(item)
-        fav.save()
-        print fav
-    return HttpResponseRedirect('/users/profile/')
+    if request.method == "PUT":
+        # id = request.POST['id']
+        # item = Item.objects.get(id=id)
+        # fav.items.remove(item)
+        # fav.save()
+        # print fav
+        form = UnfavoriteForm(request.PUT)
+        if form.is_valid():
+            print form.cleaned_data
+            return HttpResponseRedirect('/users/profile/')
+    else:
+        form = UnfavoriteForm()
+    return render(request, template, {'form': form})
 
 
 @login_required

@@ -16,3 +16,10 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         exclude = ('user', 'likes', 'dislikes')
+
+
+class UnfavoriteForm(forms.ModelForm):
+
+    class Meta:
+        model = Favorite
+        exclude = ('user')
