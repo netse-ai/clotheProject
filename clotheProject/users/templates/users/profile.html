@@ -78,9 +78,13 @@
         {% if profile %}
         <div class="panel panel-default">
           <!-- Default panel contents -->
-          <div class="panel-heading">User</div>
+          <div class="panel-heading">
+              User</div>
           <div class="panel-body">
             <h1>User: {{ profile.user.username }}</h1>
+            {% if profile.photo %}
+            <img src="{{ MEDIA_URL }}{{profile.photo.url}}">
+            {% endif %}
           </div>
         <div class="row">
     	{% for fav in favorites %}
