@@ -1,3 +1,4 @@
+from PIL import Image
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save
@@ -15,7 +16,8 @@ class UserProfile(models.Model):
     def __unicode__(self):
         return unicode(self.user.username)
 
-        def save(self, *args, **kwargs):
+    def save(self, *args, **kwargs):
+        if photo:
             size = (400, 400)
             if not self.id and not self.photo:
                 return
