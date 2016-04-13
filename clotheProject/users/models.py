@@ -16,16 +16,16 @@ class UserProfile(models.Model):
     def __unicode__(self):
         return unicode(self.user.username)
 
-    def save(self, *args, **kwargs):
-        if self.photo:
-            size = (400, 400)
-            if not self.id and not self.photo:
-                return
-
-            super(UserProfile, self).save(*args, **kwargs)
-            image = Image.open(self.photo)
-            image = image.resize(size, Image.ANTIALIAS)
-            image.save(self.photo.path)
+    # def save(self, *args, **kwargs):
+    #     if self.photo:
+    #         size = (400, 400)
+    #         if not self.id and not self.photo:
+    #             return
+    #
+    #         super(UserProfile, self).save(*args, **kwargs)
+    #         image = Image.open(self.photo)
+    #         image = image.resize(size, Image.ANTIALIAS)
+    #         image.save(self.photo.path)
 #
 # class Favorites(models.Model):
 #     pass
