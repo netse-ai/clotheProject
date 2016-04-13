@@ -38,7 +38,7 @@ def user_login(request):
 @login_required
 def user_profile(request):
     user = User.objects.get(id=request.user.id)
-    profile = UserProfile.objects.get_or_create(user=user)
+    profile, stuff = UserProfile.objects.get_or_create(user=user)
     favorites = user.favorite.items.all()
     print favorites
     template = 'users/profile.html'
