@@ -17,7 +17,7 @@ class UserProfile(models.Model):
         return unicode(self.user.username)
 
     def save(self, *args, **kwargs):
-        if photo:
+        if self.photo:
             size = (400, 400)
             if not self.id and not self.photo:
                 return
