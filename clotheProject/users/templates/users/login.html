@@ -78,7 +78,7 @@
 	        noiseIntensity: 0,
 	      }
 	      var t = new Trianglify(ops);
-	      var pattern = t.generate(document.body.clientWidth + 1000, document.body.clientHeight + 1000);
+	      var pattern = t.generate(document.body.clientWidth, document.body.clientHeight + 1000);
 	      document.body.setAttribute('style', 'background-image: '+pattern.dataUrl);
 	    });
     </script>
