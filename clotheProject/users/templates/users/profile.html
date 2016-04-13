@@ -79,14 +79,15 @@
         <div class="panel panel-default">
           <!-- Default panel contents -->
           <div class="panel-heading">
-              User</div>
+            <h1>{{ profile.user.username }}</h1>
+          </div>
           <div class="panel-body">
-            <h1>User: {{ profile.user.username }}</h1>
             {% if profile.photo %}
             <img src="{{ MEDIA_URL }}{{profile.photo.url}}">
             {% endif %}
-          </div>
+        </div>
         <div class="row">
+            <h3>Favorites:</h3>
     	{% for fav in favorites %}
     	  <div class="col-sm-6 col-md-4">
     	    <div class="thumbnail">
