@@ -79,6 +79,7 @@
         <div class="panel panel-default">
           <!-- Default panel contents -->
           <div class="panel-heading">
+            <h1> Your Profile </h1>
             <h1>{{ profile.user.username }}</h1>
           </div>
           <div class="panel-body">
@@ -87,7 +88,7 @@
             {% endif %}
         </div>
         <div class="row">
-            <h3>Favorites:</h3>
+            <h3>Your Favorites:</h3>
     	{% for fav in favorites %}
     	  <div class="col-sm-6 col-md-4">
     	    <div class="thumbnail">
