@@ -1,5 +1,4 @@
 from django.conf.urls import include, url
-from django.conf.urls.defaults import *
 from django.contrib import admin
 from django.contrib.auth.models import User
 from django.conf.urls.static import static
