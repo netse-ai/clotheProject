@@ -1,4 +1,4 @@
-from django.conf.urls import include, url, patterns
+from django.conf.urls import include, url
 from rest_framework import routers, serializers, viewsets
 from api.serializers import ItemSerializer, UserSerializer, UserProfileSerializer
 from api.views import *
